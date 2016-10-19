@@ -23,8 +23,8 @@ initialize_calendar = ->
           $('#event_date_range').val moment(start).format('MM/DD/YYYY HH:mm') + ' - ' + moment(end).format('MM/DD/YYYY HH:mm')
           date_range_picker()
           $('#event_resource_id').val resource.id
-          $('.start_hidden').val moment(start).format('YYYY-MM-DD HH:mm')
-          $('.end_hidden').val moment(end).format('YYYY-MM-DD HH:mm')
+          $('#event_start').val(moment(start).format('YYYY-MM-DD HH:mm'))
+          $('#event_end').val(moment(end).format('YYYY-MM-DD HH:mm'))
         calendar.fullCalendar 'unselect'
       eventDrop: (event, delta, revertFunc) ->
         event_data = event:
