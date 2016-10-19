@@ -16,5 +16,6 @@
 //= require bootstrap-sprockets
 //= require moment
 //= require fullcalendar
+//= require scheduler
 //= require daterangepicker
 //= require_tree .

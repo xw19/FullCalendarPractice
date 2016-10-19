@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  belongs_to :resource
 
   validates :title, presence: true
 
