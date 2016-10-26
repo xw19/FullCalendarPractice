@@ -31,6 +31,16 @@ initialize_calendar = ->
           id: event.id
           start: event.start.format()
           end: event.end.format()
+          resource_id: event.resourceId
+        $.ajax
+          url: event.update_url
+          data: event_data
+          type: 'PATCH'
+      eventResize: (event, delta, revertFunc) ->
+        event_data = event:
+          id: event.id
+          start: event.start.format()
+          end: event.end.format()
         $.ajax
           url: event.update_url
           data: event_data
@@ -40,8 +50,8 @@ initialize_calendar = ->
         $.getScript event.edit_url, ->
           $('#event_date_range').val moment(event.start).format('MM/DD/YYYY HH:mm') + ' - ' + moment(event.end).format('MM/DD/YYYY HH:mm')
           date_range_picker()
-          $('#event_resource_id').val event.resource.id
-          $('.start_hidden').val moment(event.start).format('YYYY-MM-DD HH:mm')
-          $('.end_hidden').val moment(event.end).format('YYYY-MM-DD HH:mm')
+          $('#event_resource_id').val event.resourceId
+          $('#event_start').val(moment(event.start).format('YYYY-MM-DD HH:mm'))
+          $('#event_end').val(moment(event.end).format('YYYY-MM-DD HH:mm'))
 
 $(document).on 'turbolinks:load', initialize_calendar
